@@ -1,0 +1,99 @@
+@font-face {
+  font-family: "univers-black";
+  src: url("../fonts/Univers-Black.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "univers-blackoblique";
+  src: url("../fonts/Univers-BlackOblique.otf") format("opentype");
+  font-weight: normal;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: "univers-bold";
+  src: url("../fonts/Univers-Bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "univers-boldoblique";
+  src: url("../fonts/Univers-BoldOblique.otf") format("opentype");
+  font-weight: bold;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: "univers-condensed";
+  src: url("../fonts/Univers-Condensed.otf") format("opentype");
+  font-stretch: condensed;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "univers-condensedbold";
+  src: url("../fonts/Univers-CondensedBold.otf") format("opentype");
+  font-stretch: condensed;
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "univers-condensedboldoblique";
+  src: url("../fonts/Univers-CondensedBoldOblique.otf") format("opentype");
+  font-stretch: condensed;
+  font-weight: bold;
+  font-style: oblique;
+}
+@font-face {
+  font-family: "univers-condensedlight";
+  src: url("../fonts/Univers-CondensedLight.otf") format("opentype");
+  font-stretch: condensed;
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "univers-condensedlightoblique";
+  src: url("../fonts/Univers-CondensedLightOblique.otf") format("opentype");
+  font-stretch: condensed;
+  font-weight: 300;
+  font-style: oblique;
+}
+@font-face {
+  font-family: "univers-condensedoblique";
+  src: url("../fonts/Univers-CondensedOblique.otf") format("opentype");
+  font-weight: normal;
+  font-stretch: condensed;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: "univers-light";
+  src: url("../fonts/Univers-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "univers-lightoblique";
+  src: url("../fonts/Univers-LightOblique.otf") format("opentype");
+  font-weight: 300;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: "univers-oblique";
+  src: url("../fonts/Univers-Oblique.otf") format("opentype");
+  font-weight: normal;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: "univers";
+  src: url("../fonts/Univers.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}

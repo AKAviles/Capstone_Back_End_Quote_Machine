@@ -1,0 +1,12 @@
+.test-div-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text {
+  align-self: center;
+  font-family: univers-condensed;
+  color: #3a4c84;
+  font-size: 25px;
+}

@@ -1,0 +1,24 @@
+.test-flexbox-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 10px;
+}
+
+.test-div {
+  align-self: flex-start;
+  width: 300px;
+  border: 5px solid black;
+}
+
+.test-div:hover {
+  background-color: lightblue;
+  opacity: 50%;
+}
+
+.active {
+  background-color: lightgreen;
+  opacity: 50%;
+}
