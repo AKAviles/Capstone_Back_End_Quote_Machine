@@ -16,6 +16,7 @@ public class AnswerController {
 	private AnswerService answerService;
 
 	public AnswerController(AnswerService answerService) {
+		super();
 		this.answerService = answerService;
 	}
 
@@ -33,6 +34,11 @@ public class AnswerController {
 	@GetMapping("{id}")
 	public ResponseEntity<Answer> getAnswerById(@PathVariable("id") int id) {
 		return new ResponseEntity<>(answerService.getAnswerById(id), HttpStatus.OK);
+	}
+
+	@PutMapping("{id}")
+	public ResponseEntity<Answer> updateAnswer(@PathVariable("id") int id, @RequestBody Answer answer) {
+		return new ResponseEntity<>(answerService.updateAnswer(answer, id), HttpStatus.OK);
 	}
 
 	@DeleteMapping("{id}")

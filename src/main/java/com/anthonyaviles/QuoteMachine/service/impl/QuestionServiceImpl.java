@@ -7,10 +7,12 @@ import com.anthonyaviles.QuoteMachine.repository.QuestionRepository;
 import com.anthonyaviles.QuoteMachine.service.AnswerService;
 import com.anthonyaviles.QuoteMachine.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
+@Service
 public class QuestionServiceImpl implements QuestionService {
 
 

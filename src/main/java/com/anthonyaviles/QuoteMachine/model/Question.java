@@ -16,7 +16,7 @@ public class Question {
 	@Column(name = "question_id", nullable=false)
 	private int questionId;
 
-	@Column(name = "questions", nullable = false)
+	@Column(name = "questions",unique = true, nullable = false)
 	private String question;
 
 	@Column(name = "answer_list")

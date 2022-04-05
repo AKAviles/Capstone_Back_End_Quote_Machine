@@ -8,5 +8,6 @@ public interface AnswerService {
 	Answer saveAnswer(Answer answer);
 	List<Answer> getAllAnswers();
 	Answer getAnswerById(int id);
+	Answer updateAnswer(Answer answer, int id);
 	Answer deleteAnswer(int id);
 }

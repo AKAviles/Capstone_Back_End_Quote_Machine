@@ -14,9 +14,9 @@ public class Answer {
 	@Column(name = "answer_id", nullable = false)
 	private int answerId;
 
-	@Column(name = "answer", nullable = false)
+	@Column(name = "answer",unique = true, nullable = false)
 	private String answer;
 
-	@Column(name = "answer_value", nullable = false)
+	@Column(name = "answer_value")
 	private double value;
 }
