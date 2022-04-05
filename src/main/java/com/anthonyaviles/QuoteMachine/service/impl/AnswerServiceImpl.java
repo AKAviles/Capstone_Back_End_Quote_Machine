@@ -1,5 +1,6 @@
 package com.anthonyaviles.QuoteMachine.service.impl;
 
+import com.anthonyaviles.QuoteMachine.exception.ResourceNotFoundException;
 import com.anthonyaviles.QuoteMachine.model.Answer;
 import com.anthonyaviles.QuoteMachine.repository.AnswerRepository;
 import com.anthonyaviles.QuoteMachine.service.AnswerService;
@@ -18,21 +19,24 @@ public class AnswerServiceImpl implements AnswerService {
 
 	@Override
 	public Answer saveAnswer(Answer answer) {
-		return null;
+		return answerRepository.save(answer);
 	}
 
 	@Override
 	public List<Answer> getAllAnswers() {
-		return null;
+		return answerRepository.findAll();
 	}
 
 	@Override
 	public Answer getAnswerById(int id) {
-		return null;
+		return answerRepository.findById(id).orElseThrow(() ->
+				new ResourceNotFoundException("Answer", "Id", id));
 	}
 
 	@Override
 	public Answer deleteAnswer(int id) {
-		return null;
+		Answer existingAnswer = getAnswerById(id);
+		answerRepository.delete(existingAnswer);
+		return existingAnswer;
 	}
 }

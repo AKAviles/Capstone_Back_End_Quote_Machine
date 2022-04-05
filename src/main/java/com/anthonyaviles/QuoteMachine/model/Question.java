@@ -23,4 +23,8 @@ public class Question {
 	@OneToMany(cascade = CascadeType.ALL)
 	List<Answer> answers = new ArrayList<>();
 
+	public void deleteAnswer(Answer answer) {
+		answers.remove(answer);
+	}
+
 }

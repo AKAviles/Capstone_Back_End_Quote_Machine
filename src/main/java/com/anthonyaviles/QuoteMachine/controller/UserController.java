@@ -45,12 +45,6 @@ public class UserController {
 		return new ResponseEntity<>(UserDto.from(user), HttpStatus.OK);
 	}
 
-//	//build getQuoteForUser REST API
-//	@GetMapping("{id}/quotes")
-//	public ResponseEntity<QuoteDto> getQuotesforUser(@PathVariable("id") long id) {
-//		User user = userService.getUserById(id);
-//	}
-
 	//build updateUser REST API
 	//{id} adds path variable /api/users/{id}
 	//@RequestBody  maps the HttpRequest body to a transfer or domain object, enabling automatic deserialization of the inbound HttpRequest body onto a Java object

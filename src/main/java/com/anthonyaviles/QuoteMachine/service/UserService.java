@@ -13,6 +13,6 @@ public interface UserService {
 	boolean checkIfUserWithEmailExists(String email);
 	User updateUser(User user, long id);
 	void deleteUser(long id);
-	public User addQuoteToUser(long userId, Quote quote);
-	public Quote deleteQuoteFromUser(long userId, int quoteId);
+	User addQuoteToUser(long userId, Quote quote);
+	Quote deleteQuoteFromUser(long userId, int quoteId);
 }
