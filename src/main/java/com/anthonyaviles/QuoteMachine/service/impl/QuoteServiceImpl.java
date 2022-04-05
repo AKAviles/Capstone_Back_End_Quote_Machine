@@ -21,7 +21,6 @@ public class QuoteServiceImpl implements QuoteService {
 	}
 
 	@Override
-	// TODO: Add functionality to link to userId
 	public Quote saveQuote(Quote quote) {
 		return quoteRepository.save(quote);
 	}

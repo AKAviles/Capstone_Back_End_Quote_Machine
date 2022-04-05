@@ -68,17 +68,25 @@ public class UserController {
 		return new ResponseEntity<>("User deleted Successfully.", HttpStatus.OK);
 	}
 
+	//build get quotes by user
+	@GetMapping("/{userId}/quotes")
+	public ResponseEntity<List<Quote>> getQuotesForUser(@PathVariable long userId) {
+		User user = userService.getUserById(userId);
+		List<Quote> quotes = user.getQuotes();
+		return new ResponseEntity<>(quotes, HttpStatus.OK);
+	}
+
 	//build add quote to user REST API
 	@PostMapping("/{userId}/quotes")
-	public ResponseEntity<User> addQuoteToUser(@PathVariable long userId, Quote quote) {
+	public ResponseEntity<User> addQuoteToUser(@PathVariable long userId, @RequestBody Quote quote) {
 		User user = userService.addQuoteToUser(userId, quote);
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 
 	//build deleteQuoteFromUser REST API
 	@DeleteMapping("/{userId}/{quoteId}/remove")
-	public ResponseEntity<User> deleteQuoteFromUser(@PathVariable long userId, @PathVariable int quoteId) {
-		User user = userService.deleteQuoteFromCart(userId, quoteId);
-		return new ResponseEntity<>(user, HttpStatus.OK);
+	public ResponseEntity<Quote> deleteQuoteFromUser(@PathVariable long userId, @PathVariable int quoteId) {
+		Quote quote = userService.deleteQuoteFromUser(userId, quoteId);
+		return new ResponseEntity<>(quote, HttpStatus.OK);
 	}
 }

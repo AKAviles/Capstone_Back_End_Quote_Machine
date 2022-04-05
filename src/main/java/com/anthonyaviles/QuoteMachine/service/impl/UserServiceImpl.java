@@ -94,7 +94,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public User addQuoteToUser(long userId, Quote quote) {
-		quoteService.saveQuote(quote);
 		User user = getUserById(userId);
 		List<Quote> userQuotes = user.getQuotes();
 		userQuotes.add(quote);
@@ -104,10 +103,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public User deleteQuoteFromCart(long userId, int quoteId) {
+	public Quote deleteQuoteFromUser(long userId, int quoteId) {
 		User user = getUserById(userId);
 		Quote quote = quoteService.getQuoteById(quoteId);
 		user.deleteQuote(quote);
-		return user;
+		return quote;
 	}
 }

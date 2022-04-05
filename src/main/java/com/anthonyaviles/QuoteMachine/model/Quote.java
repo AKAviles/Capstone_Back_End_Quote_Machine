@@ -21,8 +21,6 @@ public class Quote {
 	@Column(name = "total_cost", nullable = false)
 	private double cost;
 
-	@ManyToOne
-	private User user;
 
 	public static Quote from(QuoteDto quoteDto) {
 		Quote quote = new Quote();

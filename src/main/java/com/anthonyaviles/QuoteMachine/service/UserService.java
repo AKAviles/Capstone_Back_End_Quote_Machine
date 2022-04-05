@@ -14,5 +14,5 @@ public interface UserService {
 	User updateUser(User user, long id);
 	void deleteUser(long id);
 	public User addQuoteToUser(long userId, Quote quote);
-	public User deleteQuoteFromCart(long userId, int quoteId);
+	public Quote deleteQuoteFromUser(long userId, int quoteId);
 }

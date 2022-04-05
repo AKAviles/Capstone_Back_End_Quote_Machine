@@ -31,7 +31,7 @@ public class User {
 	@Column(name = "password", nullable = false)
 	private String password;
 
-	@OneToMany( cascade = CascadeType.ALL)
+	@ManyToMany( cascade = CascadeType.ALL)
 	List<Quote> quotes = new ArrayList<>();
 
 	public void addQuote(Quote quote) {
