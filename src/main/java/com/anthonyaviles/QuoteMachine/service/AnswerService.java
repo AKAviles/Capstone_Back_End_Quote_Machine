@@ -10,4 +10,5 @@ public interface AnswerService {
 	Answer getAnswerById(int id);
 	Answer updateAnswer(Answer answer, int id);
 	Answer deleteAnswer(int id);
+
 }

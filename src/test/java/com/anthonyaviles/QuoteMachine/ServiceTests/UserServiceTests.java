@@ -149,6 +149,22 @@ public class UserServiceTests {
 		Assertions.assertThat(actualList).usingRecursiveComparison().isEqualTo(expectedList);
 	}
 
+	@Test
+	void saveUser_should_save_user_and_return_saved_user() {
+		User newUser = new User();
+		newUser.setFirstName("Aljo");
+		newUser.setLastName("Yan");
+		newUser.setEmail("yan@aljo.mail");
+		newUser.setPhoneNumber("123456789");
+		newUser.setPassword("illegalKnee");
+
+		int beforeSize = userService.getAllUsers().size();
+		userService.saveUser(newUser);
+		int afterSize = userService.getAllUsers().size();
+
+		Assertions.assertThat(afterSize).isEqualTo(beforeSize + 1);
+	}
+
 	@ParameterizedTest
 	@MethodSource("input")
 	void getUserById_should_return_correct_user_given_id(User user) {

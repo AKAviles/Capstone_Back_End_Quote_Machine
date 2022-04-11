@@ -5,11 +5,10 @@ import com.anthonyaviles.QuoteMachine.model.Answer;
 import com.anthonyaviles.QuoteMachine.repository.AnswerRepository;
 import com.anthonyaviles.QuoteMachine.service.AnswerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public class AnswerServiceImpl implements AnswerService {
 
 	private AnswerRepository answerRepository;
@@ -18,6 +17,8 @@ public class AnswerServiceImpl implements AnswerService {
 	public AnswerServiceImpl(AnswerRepository answerRepository) {
 		this.answerRepository = answerRepository;
 	}
+
+
 
 	@Override
 	public Answer saveAnswer(Answer answer) {
