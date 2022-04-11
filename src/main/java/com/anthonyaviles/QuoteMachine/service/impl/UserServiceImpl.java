@@ -13,9 +13,9 @@ import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -28,6 +28,9 @@ public class UserServiceImpl implements UserService {
 		this.userRepository = userRepository;
 		this.quoteService = quoteService;
 
+	}
+
+	public UserServiceImpl() {
 	}
 
 	@Override
@@ -43,12 +46,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserById(long id) {
-		Optional<User> user = userRepository.findById(id);
-		if(user.isPresent()) {
-			return user.get();
-		} else {
-			throw new ResourceNotFoundException("User", "Id", id);
-		}
+		return userRepository.findById(id).orElseThrow(() ->
+				new ResourceNotFoundException("User", "Id", id));
 	}
 
 	@Override
@@ -56,8 +55,13 @@ public class UserServiceImpl implements UserService {
 		SessionFactory factory = new Configuration().configure().buildSessionFactory();
 		Session session = factory.openSession();
 		Transaction tx = session.beginTransaction();
+		User user = null;
 		try {
-			return session.get(User.class, email);
+			TypedQuery tq = session.createQuery("FROM User WHERE email = :email");
+			tq.setParameter("email", email);
+			user = (User)tq.getSingleResult();
+			tx.commit();
+			return user;
 		} catch (ResourceNotFoundException e) {
 			throw new ResourceNotFoundException("Email", "Email", email);
 		} finally {
@@ -66,8 +70,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean checkIfUserWithEmailExists(String email) {
-		return false;
+	public List<User> getUserByFirstName(String firstName) {
+		SessionFactory factory = new Configuration().configure().buildSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = session.beginTransaction();
+		List<User> result = null;
+		try {
+			TypedQuery tq = session.createQuery("FROM User WHERE firstName like :firstName");
+			tq.setParameter("firstName", "%" + firstName + "%");
+			result = tq.getResultList();
+			tx.commit();
+			return result;
+		} catch (ResourceNotFoundException e) {
+			throw new ResourceNotFoundException("Email", "Email", firstName);
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override

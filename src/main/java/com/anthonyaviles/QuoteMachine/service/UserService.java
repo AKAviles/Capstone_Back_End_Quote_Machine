@@ -10,7 +10,7 @@ public interface UserService {
 	List<User> getAllUsers();
 	User getUserById(long id);
 	User getUserByEmail(String email);
-	boolean checkIfUserWithEmailExists(String email);
+	List<User> getUserByFirstName(String firstName);
 	User updateUser(User user, long id);
 	void deleteUser(long id);
 	User addQuoteToUser(long userId, Quote quote);

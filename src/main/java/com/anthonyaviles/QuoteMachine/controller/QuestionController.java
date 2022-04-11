@@ -37,6 +37,12 @@ public class QuestionController {
 		return new ResponseEntity<>(question, HttpStatus.OK);
 	}
 
+	//Customer query to get by question
+	@GetMapping("/")
+	public ResponseEntity<Question> getQuestionByQuestion(@RequestParam(value="question") String question) {
+		return new ResponseEntity<>(questionService.getQuestionByQuestion(question), HttpStatus.OK);
+	}
+
 	@PutMapping("{id}")
 	public ResponseEntity<Question> updateQuestion(@PathVariable("id") int id, @RequestBody Question question) {
 		Question newQuestion = questionService.updateQuestion(question, id);

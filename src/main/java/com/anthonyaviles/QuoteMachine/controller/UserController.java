@@ -2,7 +2,6 @@ package com.anthonyaviles.QuoteMachine.controller;
 
 import com.anthonyaviles.QuoteMachine.model.Quote;
 import com.anthonyaviles.QuoteMachine.model.User;
-import com.anthonyaviles.QuoteMachine.model.dto.UserDto;
 import com.anthonyaviles.QuoteMachine.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,9 +39,20 @@ public class UserController {
 	//{id} adds path variable /api/users/{id}
 	//use pathvariable in params
 	@GetMapping("{id}")
-	public ResponseEntity<UserDto> getUserById(@PathVariable("id") long id) {
-		User user = userService.getUserById(id);
-		return new ResponseEntity<>(UserDto.from(user), HttpStatus.OK);
+	public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
+		return new ResponseEntity<>( userService.getUserById(id), HttpStatus.OK);
+	}
+
+	//Custom query to get by email
+	@GetMapping("/")
+	public ResponseEntity<User> getUserByEmail(@RequestParam(value="email") String email) {
+		return new ResponseEntity<>(userService.getUserByEmail(email), HttpStatus.OK);
+	}
+
+	//Customer query to get by firstName
+	@GetMapping("/name")
+	public ResponseEntity<List<User>> getUserByFirstName(@RequestParam(value="firstName") String firstName) {
+		return new ResponseEntity<>(userService.getUserByFirstName(firstName), HttpStatus.OK);
 	}
 
 	//build updateUser REST API

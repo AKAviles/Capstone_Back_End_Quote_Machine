@@ -9,6 +9,7 @@ public interface QuestionService {
 	Question saveQuestion(Question question);
 	List<Question> getAllQuestions();
 	Question getQuestionById(int id);
+	Question getQuestionByQuestion(String question);
 	Question deleteQuestion(int id);
 	Question updateQuestion(Question question, int id);
 	Question addAnswerToQuestion(int questionId, Answer answer);
