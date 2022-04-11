@@ -21,4 +21,5 @@ Items to complete:
    2. Login/Register
    3. Bcrypt
 2. Implement custom queries in frontend
-3. Write detailed Readme files
+3. Connect React and Spring with final react build
+4. Write detailed Readme files
