@@ -1,7 +1,6 @@
 package com.anthonyaviles.QuoteMachine.ServiceTests;
 
 import com.anthonyaviles.QuoteMachine.model.Question;
-import com.anthonyaviles.QuoteMachine.model.User;
 import com.anthonyaviles.QuoteMachine.repository.QuestionRepository;
 import com.anthonyaviles.QuoteMachine.service.impl.QuestionServiceImpl;
 import org.assertj.core.api.Assertions;
@@ -40,48 +39,45 @@ public class QuestionServiceTests {
 		transaction = session.beginTransaction();
 
 		//Drop Tables
-		session.createSQLQuery("drop table users_quotes;").executeUpdate();
-		session.createSQLQuery("drop table questions_answers;").executeUpdate();
-		session.createSQLQuery("drop table users;").executeUpdate();
-		session.createSQLQuery("drop table quotes;").executeUpdate();
-		session.createSQLQuery("drop table questions;").executeUpdate();
-		session.createSQLQuery("drop table answers;").executeUpdate();
+		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 0").executeUpdate();
+		session.createSQLQuery("truncate table questions_answers;").executeUpdate();
+		session.createSQLQuery("truncate table questions;").executeUpdate();
+		session.createSQLQuery("truncate table answers;").executeUpdate();
+		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 1").executeUpdate();
 
-		//Populate Users Table
-		User user1 = new User();
-		user1.setFirstName("Anthony");
-		user1.setLastName("Aviles");
-		user1.setEmail("anthony@gmail.com");
-		user1.setPhoneNumber("123");
-		user1.setPassword("abc");
+		//Populate Questions Table
+		Question question1 = new Question();
+		question1.setQuestion("Are you looking to fade or remove your tattoo?");
 
-		User user2 = new User();
-		user2.setFirstName("Anthony");
-		user2.setLastName("James");
-		user2.setEmail("james@mail.com");
-		user2.setPhoneNumber("345");
-		user2.setPassword("abcdef");
+		Question question2 = new Question();
+		question2.setQuestion("What is your skin type?");
 
-		User user3 = new User();
-		user3.setFirstName("Stephen");
-		user3.setLastName("Thompson");
-		user3.setEmail("kicman@ufc.com");
-		user3.setPhoneNumber("123456");
-		user3.setPassword("kickingit");
+		Question question3 = new Question();
+		question3.setQuestion("What is the age of your tattoo?");
 
-		User user4 = new User();
-		user4.setFirstName("Gilbert");
-		user4.setLastName("Johnson");
-		user4.setEmail("gil@gil.com");
-		user4.setPhoneNumber("1234567890");
-		user4.setPassword("password");
+		Question question4 = new Question();
+		question4.setQuestion("What size is your tattoo?");
 
-		User user5 = new User();
-		user5.setFirstName("Daniel");
-		user5.setLastName("Day");
-		user5.setEmail("days@mail.com");
-		user5.setPhoneNumber("0987654321");
-		user5.setPassword("password");
+		Question question5 = new Question();
+		question5.setQuestion("What color is your tattoo?");
+
+		Question question6 = new Question();
+		question6.setQuestion("Amount of Ink");
+
+		Question question7 = new Question();
+		question7.setQuestion("Scarring");
+
+		Question question8 = new Question();
+		question8.setQuestion("Layering");
+
+		session.save(question1);
+		session.save(question2);
+		session.save(question3);
+		session.save(question4);
+		session.save(question5);
+		session.save(question6);
+		session.save(question7);
+		session.save(question8);
 
 		transaction.commit();
 		session.close();

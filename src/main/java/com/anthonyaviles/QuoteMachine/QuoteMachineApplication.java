@@ -11,9 +11,6 @@ public class QuoteMachineApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(QuoteMachineApplication.class, args);
-
-
-
 	}
 
 }

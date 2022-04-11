@@ -1,5 +1,6 @@
 package com.anthonyaviles.QuoteMachine.ServiceTests;
 
+import com.anthonyaviles.QuoteMachine.model.Quote;
 import com.anthonyaviles.QuoteMachine.model.User;
 import com.anthonyaviles.QuoteMachine.repository.UserRepository;
 import com.anthonyaviles.QuoteMachine.service.impl.UserServiceImpl;
@@ -47,23 +48,23 @@ public class UserServiceTests {
 		session = factory.openSession();
 		transaction = session.beginTransaction();
 
-		//Drop Tables
+		//Truncate Tables
 		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 0").executeUpdate();
 		session.createSQLQuery("truncate table users_quotes;").executeUpdate();
-		session.createSQLQuery("truncate table questions_answers;").executeUpdate();
 		session.createSQLQuery("truncate table users;").executeUpdate();
 		session.createSQLQuery("truncate table quotes;").executeUpdate();
-		session.createSQLQuery("truncate table questions;").executeUpdate();
-		session.createSQLQuery("truncate table answers;").executeUpdate();
 		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 1").executeUpdate();
 
 		//Populate Users Table
+
+
 		User user1 = new User();
 		user1.setFirstName("Anthony");
 		user1.setLastName("Aviles");
 		user1.setEmail("anthony@gmail.com");
 		user1.setPhoneNumber("123");
 		user1.setPassword("abc");
+
 
 		User user2 = new User();
 		user2.setFirstName("Anthony");
@@ -93,11 +94,14 @@ public class UserServiceTests {
 		user5.setPhoneNumber("0987654321");
 		user5.setPassword("password");
 
+
+
 		session.save(user1);
 		session.save(user2);
 		session.save(user3);
 		session.save(user4);
 		session.save(user5);
+
 
 		transaction.commit();
 		session.close();
@@ -150,20 +154,20 @@ public class UserServiceTests {
 	}
 
 	@Test
-	void saveUser_should_save_user_and_return_saved_user() {
-		User newUser = new User();
-		newUser.setFirstName("Aljo");
-		newUser.setLastName("Yan");
-		newUser.setEmail("yan@aljo.mail");
-		newUser.setPhoneNumber("123456789");
-		newUser.setPassword("illegalKnee");
-
-		int beforeSize = userService.getAllUsers().size();
-		userService.saveUser(newUser);
-		int afterSize = userService.getAllUsers().size();
+	void addQuoteToUser_should_add_quote_to_user_quote_list() {
+		Quote expectedQuote1 = new Quote();
+		expectedQuote1.setQid(1);
+		expectedQuote1.setSessions(23);
+		expectedQuote1.setCost(2000.00);
+		User testUser = userService.getUserById(1L);
+		int beforeSize = testUser.getQuotes().size();
+		when(userService.addQuoteToUser(1, expectedQuote1)).thenReturn(userRepository.getById(1L));
+		int afterSize = testUser.getQuotes().size();
 
 		Assertions.assertThat(afterSize).isEqualTo(beforeSize + 1);
 	}
+
+
 
 	@ParameterizedTest
 	@MethodSource("input")
