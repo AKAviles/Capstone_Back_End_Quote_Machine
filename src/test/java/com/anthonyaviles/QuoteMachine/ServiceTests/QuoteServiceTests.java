@@ -1,5 +1,6 @@
 package com.anthonyaviles.QuoteMachine.ServiceTests;
 
+import com.anthonyaviles.QuoteMachine.exception.ResourceNotFoundException;
 import com.anthonyaviles.QuoteMachine.model.Quote;
 import com.anthonyaviles.QuoteMachine.repository.QuoteRepository;
 import com.anthonyaviles.QuoteMachine.service.impl.QuoteServiceImpl;
@@ -17,6 +18,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.when;
 
 @ActiveProfiles("test")
@@ -93,6 +95,14 @@ public class QuoteServiceTests {
 		when(quoteRepository.findById(1)).thenReturn(Optional.of(expectedQuote));
 		Quote actualQuote = quoteService.getQuoteById(expectedQuote.getQid());
 		Assertions.assertThat(actualQuote).isEqualTo(expectedQuote);
+	}
+
+	@Test
+	public void whenExceptionThrown_thenAssertionSucceeds() {
+		assertThatThrownBy(() -> {
+			quoteService.getQuoteById(7);
+		}).isInstanceOf(ResourceNotFoundException.class)
+				.hasMessage("Quote not found with Id : '7'");
 	}
 
 }
