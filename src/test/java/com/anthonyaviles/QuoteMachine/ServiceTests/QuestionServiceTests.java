@@ -1,5 +1,6 @@
 package com.anthonyaviles.QuoteMachine.ServiceTests;
 
+import com.anthonyaviles.QuoteMachine.model.Answer;
 import com.anthonyaviles.QuoteMachine.model.Question;
 import com.anthonyaviles.QuoteMachine.repository.QuestionRepository;
 import com.anthonyaviles.QuoteMachine.service.impl.QuestionServiceImpl;
@@ -14,6 +15,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -93,6 +98,26 @@ public class QuestionServiceTests {
 		when(questionRepository.findByQuestion(anyString())).thenReturn(expectedQuestion);
 		Question actualQuestion = questionService.getQuestionByQuestion("Amount of Ink");
 
+		Assertions.assertThat(actualQuestion).isEqualTo(expectedQuestion);
+	}
+
+	@Test
+	public void addAnswerToQuestion_should_add_answer_to_question_answer_list() {
+		Answer expectedAnswer1 = new Answer();
+		expectedAnswer1.setAnswerId(1);
+		expectedAnswer1.setAnswer("Fade");
+		List<Answer> expectedList = new ArrayList<>();
+		expectedList.add(expectedAnswer1);
+
+		Question expectedQuestion = new Question();
+		expectedQuestion.setQuestionId(1);
+		expectedQuestion.setQuestion("Are you looking to fade or remove your tattoo?");
+		expectedQuestion.setAnswers(expectedList);
+
+		when(questionRepository.findById(1))
+				.thenReturn(Optional.of(expectedQuestion));
+		questionService.addAnswerToQuestion(1, expectedAnswer1);
+		Question actualQuestion = questionService.getQuestionById(1);
 		Assertions.assertThat(actualQuestion).isEqualTo(expectedQuestion);
 	}
 }

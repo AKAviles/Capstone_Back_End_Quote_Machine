@@ -2,19 +2,27 @@
 
 ### Spring Application that manages consultation data for Delete Tattoo Removal
 
-Estimated Completion: 90 percent
 
-Items worked on yesterday:
+April 12th:
+<br>
+Estimated Completion: 90 percent
+<br>
+Items worked on:
+<br>
+- Finishing tests
+
+
+April 11th:
+<br>
+Estimated Completion: 90 percent
+<br>
+Items worked on:
     <br>
 - added custom queries
 - tested customer queries
 - adding h2 database for testing purposes
 
-Items to do today:
-<br>
-- Finish testing for service methods
-
-Items to complete:
+Overall items to complete:
 <br>
 1. Adding Spring security for:
    1. Session Management

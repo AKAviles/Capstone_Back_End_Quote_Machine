@@ -42,7 +42,7 @@ public class QuoteServiceTests {
 		//Truncate Tables
 		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 0").executeUpdate();
 		session.createSQLQuery("truncate table users_quotes").executeUpdate();
-		session.createSQLQuery("truncate table quotes");
+		session.createSQLQuery("truncate table quotes").executeUpdate();
 		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 1").executeUpdate();
 
 		//Populate Quotes

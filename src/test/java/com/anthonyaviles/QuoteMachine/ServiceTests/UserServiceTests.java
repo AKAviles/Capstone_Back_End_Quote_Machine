@@ -56,14 +56,13 @@ public class UserServiceTests {
 		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 1").executeUpdate();
 
 		//Populate Users Table
-
-
 		User user1 = new User();
 		user1.setFirstName("Anthony");
 		user1.setLastName("Aviles");
 		user1.setEmail("anthony@gmail.com");
 		user1.setPhoneNumber("123");
 		user1.setPassword("abc");
+
 
 
 		User user2 = new User();
@@ -159,12 +158,22 @@ public class UserServiceTests {
 		expectedQuote1.setQid(1);
 		expectedQuote1.setSessions(23);
 		expectedQuote1.setCost(2000.00);
-		User testUser = userService.getUserById(1L);
-		int beforeSize = testUser.getQuotes().size();
-		when(userService.addQuoteToUser(1, expectedQuote1)).thenReturn(userRepository.getById(1L));
-		int afterSize = testUser.getQuotes().size();
+		List<Quote> expectedList = new ArrayList<>();
+		expectedList.add(expectedQuote1);
 
-		Assertions.assertThat(afterSize).isEqualTo(beforeSize + 1);
+		User expectedUser1 = new User();
+		expectedUser1.setId(1);
+		expectedUser1.setFirstName("Anthony");
+		expectedUser1.setLastName("Aviles");
+		expectedUser1.setEmail("anthony@gmail.com");
+		expectedUser1.setPhoneNumber("123");
+		expectedUser1.setPassword("abc");
+		expectedUser1.setQuotes(expectedList);
+
+		when(userRepository.findById(1L)).thenReturn(Optional.of(expectedUser1));
+		userService.addQuoteToUser(1, expectedQuote1);
+		User actualUser = userService.getUserById(1);
+		Assertions.assertThat(actualUser).isEqualTo(expectedUser1);
 	}
 
 
