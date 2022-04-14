@@ -3,6 +3,19 @@
 ### Spring Application that manages consultation data for Delete Tattoo Removal
 
 
+April 14th:
+<br>
+Estimated Completion: 95%
+<br>
+Items worked on:
+<br>
+- Finished front-end implementation
+<br>
+To do:
+- Implement Spring Security
+
+
+
 April 12th:
 <br>
 Estimated Completion: 90 percent

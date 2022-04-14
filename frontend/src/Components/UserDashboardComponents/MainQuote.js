@@ -15,7 +15,7 @@ import "../../css/radios.css";
 import "../../css/tattooColor.css";
 import "../../css/displayTotal.css";
 
-export default function MainQuote({ handleStartQuote }) {
+export default function MainQuote() {
   const initialFormState = {
     removalamount: "",
     skintype: "",
@@ -65,12 +65,7 @@ export default function MainQuote({ handleStartQuote }) {
     />,
     <TattooInkAmount formData={formData} handleChange={handleChange} />,
     <TattooScarring formData={formData} handleChange={handleChange} />,
-    <TattooLayering
-      formData={formData}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-      handleStartQuote={handleStartQuote}
-    />,
+    <TattooLayering formData={formData} handleChange={handleChange} />,
   ];
 
   function next() {
@@ -107,14 +102,11 @@ export default function MainQuote({ handleStartQuote }) {
           </div>
         </>
       ) : (
-        <div className='col-12'>
+        <div className='card-container col-12'>
           {cards[spot]}
           <div className='test-div-btn'>
             {spot === cards.length - 1 ? (
-              <DisplayTotal
-                formData={formData}
-                handleStartQuote={handleStartQuote}
-              />
+              <DisplayTotal formData={formData} handleSubmit={handleSubmit} />
             ) : null}
           </div>
           <div>

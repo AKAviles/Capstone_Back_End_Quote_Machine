@@ -1,26 +1,26 @@
 @font-face {
-  font-family: "univers-black";
+  font-family: Univers;
   src: url("../fonts/Univers-Black.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "univers-blackoblique";
+  font-family: Univers;
   src: url("../fonts/Univers-BlackOblique.otf") format("opentype");
   font-weight: normal;
   font-style: oblique;
 }
 
 @font-face {
-  font-family: "univers-bold";
+  font-family: Univers;
   src: url("../fonts/Univers-Bold.otf") format("opentype");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "univers-boldoblique";
+  font-family: Univers;
   src: url("../fonts/Univers-BoldOblique.otf") format("opentype");
   font-weight: bold;
   font-style: oblique;

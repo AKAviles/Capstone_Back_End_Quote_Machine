@@ -1,15 +1,10 @@
 import React from "react";
 import "../../css/card.css";
 
-export default function TattooLayering({
-  formData,
-  handleChange,
-  handleSubmit,
-  handleStartQuote,
-}) {
+export default function TattooLayering({ formData, handleChange }) {
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form>
         <h3>Layering</h3>
         <label>
           <input
@@ -34,13 +29,6 @@ export default function TattooLayering({
           <span>Yes - multiple tattoos layered on top of eachother </span>
         </label>
         {/* <button onClick={handleCalculateTotal}> Calculate </button> */}
-        <button
-          className='btn btn-submit'
-          type='submit'
-          onClick={handleStartQuote}
-        >
-          Submit
-        </button>
       </form>
     </>
   );

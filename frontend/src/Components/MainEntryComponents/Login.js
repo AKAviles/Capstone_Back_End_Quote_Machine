@@ -31,7 +31,7 @@ export default function Login() {
           />
 
           <input
-            type='text'
+            type='password'
             placeholder='Password'
             value={loginForm.password}
             id='password'

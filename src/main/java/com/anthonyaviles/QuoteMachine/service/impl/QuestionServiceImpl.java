@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.TypedQuery;
@@ -41,7 +42,7 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public List<Question> getAllQuestions() {
-		return questionRepository.findAll();
+		return questionRepository.findAll(Sort.by(Sort.Direction.ASC, "questionId"));
 	}
 
 	@Override
@@ -95,6 +96,7 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
+	@Transactional
 	public Answer deleteAnswerFromQuestion(int questionId, int answerId) {
 		Question question = getQuestionById(questionId);
 		Answer answer = answerService.getAnswerById(answerId);

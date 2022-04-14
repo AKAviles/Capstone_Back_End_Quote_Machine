@@ -4,24 +4,20 @@ import "../../css/app.css";
 import "../../css/dashboard.css";
 import logo from "../../images/delete-logo-stacked-rgb (1).png";
 
-export default function Navbar() {
+export default function AdminNav() {
   return (
     <div className='navigation'>
-      <Link to='/dashboard'>
+      <Link to='/admin/users'>
         <img className='resize' src={logo} alt='logo' />
       </Link>
 
       <ul className='navigation'>
-        <Link to='/dashboard'>
-          <li>Consultation</li>
+        <Link to='/admin/users'>
+          <li>Users</li>
         </Link>
 
-        <Link to='/myQuotes'>
-          <li>My Quotes</li>
-        </Link>
-
-        <Link to='/contact'>
-          <li>Contact Information</li>
+        <Link to='/admin/q-and-a'>
+          <li>Consultation Questions</li>
         </Link>
       </ul>
     </div>
