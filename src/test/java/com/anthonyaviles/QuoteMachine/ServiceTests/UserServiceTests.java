@@ -49,11 +49,11 @@ public class UserServiceTests {
 		transaction = session.beginTransaction();
 
 		//Truncate Tables
-		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 0").executeUpdate();
+		session.createSQLQuery("SET REFERENTIAL_INTEGRITY FALSE").executeUpdate();
 		session.createSQLQuery("truncate table users_quotes;").executeUpdate();
 		session.createSQLQuery("truncate table users;").executeUpdate();
 		session.createSQLQuery("truncate table quotes;").executeUpdate();
-		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 1").executeUpdate();
+		session.createSQLQuery("SET REFERENTIAL_INTEGRITY TRUE").executeUpdate();
 
 		//Populate Users Table
 		User user1 = new User();

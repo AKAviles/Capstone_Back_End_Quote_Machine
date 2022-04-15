@@ -40,11 +40,11 @@ public class AnswerServiceTests {
 		transaction = session.beginTransaction();
 
 		//Truncate Tables
-		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 0").executeUpdate();
+		session.createSQLQuery("SET REFERENTIAL_INTEGRITY FALSE").executeUpdate();
 		session.createSQLQuery("truncate table questions_answers").executeUpdate();
 		session.createSQLQuery("truncate table answers").executeUpdate();
 		session.createSQLQuery("truncate table questions").executeUpdate();
-		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 1").executeUpdate();
+		session.createSQLQuery("SET REFERENTIAL_INTEGRITY TRUE").executeUpdate();
 
 		//Populate Answers
 		Answer answer1 = new Answer();

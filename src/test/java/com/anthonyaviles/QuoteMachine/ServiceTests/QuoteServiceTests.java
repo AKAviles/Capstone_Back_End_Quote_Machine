@@ -42,10 +42,10 @@ public class QuoteServiceTests {
 		transaction = session.beginTransaction();
 
 		//Truncate Tables
-		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 0").executeUpdate();
+		session.createSQLQuery("SET REFERENTIAL_INTEGRITY FALSE").executeUpdate();
 		session.createSQLQuery("truncate table users_quotes").executeUpdate();
 		session.createSQLQuery("truncate table quotes").executeUpdate();
-		session.createSQLQuery("SET FOREIGN_KEY_CHECKS = 1").executeUpdate();
+		session.createSQLQuery("SET REFERENTIAL_INTEGRITY TRUE").executeUpdate();
 
 		//Populate Quotes
 		Quote quote1 = new Quote();
