@@ -4,18 +4,20 @@ import com.anthonyaviles.QuoteMachine.model.dto.UserDto;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Data
 @Entity
-@Table(name="users")
+@Table(name="users",
+uniqueConstraints = )
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
+
+	@Column(name="username", nullable = false, unique = true )
+	private String username;
 
 	@Column(name = "first_name", nullable = false)
 	private String firstName;
@@ -35,6 +37,11 @@ public class User {
 	@ManyToMany( cascade = CascadeType.ALL, fetch= FetchType.EAGER)
 	List<Quote> quotes = new ArrayList<>();
 
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable( name = "user_roles",
+				joinColumns = @JoinColumn(name = "user_id"),
+				inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<>();
 
 
 	public void addQuote(Quote quote) {
