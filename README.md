@@ -51,8 +51,30 @@
 
 ## User Stories
 ### User
+1. As a user, I would like to estimated quotes for potential tattoo removal
+2. As a user, I would like to view my saved quotes for future reference
+3. As a user, I would like to delete quotes from my list
+4. As a user, I would like to update my contact information
+
 ### Admin
+1. As an admin, I would like to view a list of all registered users
+2. As an admin, I would like to be able to delete users
+3. As an admin, I would like to view the list of questions for the consultation
+4. As an admin, I would like to view and edit answers for each question
+5. As an admin, I would like to search for users by email or name
 ## Technical Challenges
+
+Throughout this project, I've learned a new language in Java and the Spring Framework. These are the 
+three main technical challenges I've run into:
+1. Creating a RESTful application with Spring JPA
+2. Completing unit testing for my service layer
+3. Implementing Spring Security features
+
+With these challenges, I've worked through them by doing the following:
+- Reviewing course material such as code examples, presentations, and my colleagues
+- Reviewing documentation on sites such as W3Schools, MDN, and GeeksforGeeks
+- Leveraging additional educational material through YouTube and Udemy
+
 ## Description
 
 Quote-Machine is an app I'm building for a local tattoo removal company. The goal is to increase web traffic and provide
