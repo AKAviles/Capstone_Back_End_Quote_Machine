@@ -8,6 +8,9 @@
   </kbd>
 </div>
 
+## Table of Contents
+- [Progress](##Updates)
+
 ## Updates
 
 ### Progress
