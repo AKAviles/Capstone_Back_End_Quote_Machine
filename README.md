@@ -59,7 +59,7 @@ Quote-Machine is an app I'm building for a local tattoo removal company. The goa
 a tool that can provide consultation data without using in-store resources. Currently, only in-person consultations are completed.
 
 ### Tech Stack
-<img src="Images/techStack.PNG"  width = "300" />
+<img src="Images/techStack.png"  width = "300" />
 
 ### Database Schema
 <img src="Images/Db Scheme.PNG"  width = "300" />
