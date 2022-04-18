@@ -22,6 +22,13 @@
 ## Updates
 
 ### Progress
+#### April 18th
+##### Estimated Completion: 97%
+##### Completed
+- Updated ReadMe file formatting
+- Completed Spring security configuration
+- Completed Spring security controller
+
 #### April 15th
 ##### Estimated Completion: 95%
 ##### Completed
@@ -47,7 +54,7 @@
 - adding h2 database for testing purposes
 
 ### To-do
-- [ ] Implement Spring Security
+- [ ] Implement Spring Security endpoints in frontend
 
 ## User Stories
 ### User
