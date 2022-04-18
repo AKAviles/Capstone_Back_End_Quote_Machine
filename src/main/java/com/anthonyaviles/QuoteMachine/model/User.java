@@ -8,8 +8,7 @@ import java.util.*;
 
 @Data
 @Entity
-@Table(name="users",
-uniqueConstraints = )
+@Table(name="users")
 public class User {
 
 	@Id
