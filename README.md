@@ -9,7 +9,7 @@
 </div>
 
 ## Table of Contents
-- [Progress](##Updates)
+- [Progress](#Updates)
 
 ## Updates
 
