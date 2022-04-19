@@ -22,6 +22,12 @@
 ## Updates
 
 ### Progress
+#### April 19th
+##### Estimated Completion: 97%
+##### Completed
+- Completed Login and Registration
+- Updated controller endpoints to grant authorizations
+
 #### April 18th
 ##### Estimated Completion: 97%
 ##### Completed
@@ -54,7 +60,8 @@
 - adding h2 database for testing purposes
 
 ### To-do
-- [ ] Implement Spring Security endpoints in frontend
+- [x] Implement Spring Security endpoints in frontend
+- [] Update exceptions and error messages
 
 ## User Stories
 ### User
