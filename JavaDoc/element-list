@@ -1,0 +1,15 @@
+com.anthonyaviles.QuoteMachine
+com.anthonyaviles.QuoteMachine.config
+com.anthonyaviles.QuoteMachine.controller
+com.anthonyaviles.QuoteMachine.exception
+com.anthonyaviles.QuoteMachine.model
+com.anthonyaviles.QuoteMachine.model.dto
+com.anthonyaviles.QuoteMachine.payload.request
+com.anthonyaviles.QuoteMachine.payload.response
+com.anthonyaviles.QuoteMachine.repository
+com.anthonyaviles.QuoteMachine.security
+com.anthonyaviles.QuoteMachine.security.jwt
+com.anthonyaviles.QuoteMachine.security.services
+com.anthonyaviles.QuoteMachine.service
+com.anthonyaviles.QuoteMachine.service.impl
+com.anthonyaviles.QuoteMachine.ServiceTests

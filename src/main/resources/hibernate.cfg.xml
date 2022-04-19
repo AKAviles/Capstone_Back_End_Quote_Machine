@@ -18,5 +18,6 @@
         <mapping class="com.anthonyaviles.QuoteMachine.model.Question"/>
         <mapping class="com.anthonyaviles.QuoteMachine.model.Quote"/>
         <mapping class="com.anthonyaviles.QuoteMachine.model.User"/>
+        <mapping class="com.anthonyaviles.QuoteMachine.model.Role"/>
     </session-factory>
 </hibernate-configuration>
