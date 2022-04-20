@@ -57,6 +57,7 @@ public class UserServiceTests {
 
 		//Populate Users Table
 		User user1 = new User();
+		user1.setUsername("testUser1");
 		user1.setFirstName("Anthony");
 		user1.setLastName("Aviles");
 		user1.setEmail("anthony@gmail.com");
@@ -66,6 +67,7 @@ public class UserServiceTests {
 
 
 		User user2 = new User();
+		user2.setUsername("testUser2");
 		user2.setFirstName("Anthony");
 		user2.setLastName("James");
 		user2.setEmail("james@mail.com");
@@ -73,6 +75,7 @@ public class UserServiceTests {
 		user2.setPassword("abcdef");
 
 		User user3 = new User();
+		user3.setUsername("testUser3");
 		user3.setFirstName("Stephen");
 		user3.setLastName("Thompson");
 		user3.setEmail("kicman@ufc.com");
@@ -80,6 +83,7 @@ public class UserServiceTests {
 		user3.setPassword("kickingit");
 
 		User user4 = new User();
+		user4.setUsername("testUser4");
 		user4.setFirstName("Gilbert");
 		user4.setLastName("Johnson");
 		user4.setEmail("gil@gil.com");
@@ -87,6 +91,7 @@ public class UserServiceTests {
 		user4.setPassword("password");
 
 		User user5 = new User();
+		user5.setUsername("testUser5");
 		user5.setFirstName("Daniel");
 		user5.setLastName("Day");
 		user5.setEmail("days@mail.com");
@@ -111,14 +116,15 @@ public class UserServiceTests {
 	@Test
 	public void getUserByEmail_should_return_correct_user_given_valid_email() {
 		User expectedUser = new User();
-		expectedUser.setId(5);
+		expectedUser.setId(5L);
+		expectedUser.setUsername("testUser5");
 		expectedUser.setFirstName("Daniel");
 		expectedUser.setLastName("Day");
 		expectedUser.setEmail("days@mail.com");
 		expectedUser.setPhoneNumber("0987654321");
 		expectedUser.setPassword("password");
 
-		when(userRepository.findByEmail(anyString())).thenReturn(expectedUser);
+		when(userRepository.findByEmailIs(anyString())).thenReturn(expectedUser);
 		User actualUser = userService.getUserByEmail("days@mail.com");
 
 		Assertions.assertThat(actualUser).isEqualTo(expectedUser);
@@ -127,7 +133,8 @@ public class UserServiceTests {
 	@Test
 	public void getUserByFirstName_should_return_correct_users_given_valid_Name() {
 		User expectedUser1 = new User();
-		expectedUser1.setId(1);
+		expectedUser1.setId(1L);
+		expectedUser1.setUsername("testUser1");
 		expectedUser1.setFirstName("Anthony");
 		expectedUser1.setLastName("Aviles");
 		expectedUser1.setEmail("anthony@gmail.com");
@@ -135,7 +142,9 @@ public class UserServiceTests {
 		expectedUser1.setPassword("abc");
 
 		User expectedUser2 = new User();
-		expectedUser2.setId(2);
+
+		expectedUser2.setId(2L);
+		expectedUser2.setUsername("testUser2");
 		expectedUser2.setFirstName("Anthony");
 		expectedUser2.setLastName("James");
 		expectedUser2.setEmail("james@mail.com");
@@ -146,7 +155,7 @@ public class UserServiceTests {
 		expectedList.add(expectedUser1);
 		expectedList.add(expectedUser2);
 
-		when(userRepository.findByFirstName(anyString())).thenReturn(expectedList);
+		when(userRepository.findUserByFirstNameStartingWith(anyString())).thenReturn(expectedList);
 		List<User> actualList = userService.getUserByFirstName("Ant");
 
 		Assertions.assertThat(actualList).usingRecursiveComparison().isEqualTo(expectedList);
@@ -162,7 +171,8 @@ public class UserServiceTests {
 		expectedList.add(expectedQuote1);
 
 		User expectedUser1 = new User();
-		expectedUser1.setId(1);
+		expectedUser1.setId(1L);
+		expectedUser1.setUsername("testUser1");
 		expectedUser1.setFirstName("Anthony");
 		expectedUser1.setLastName("Aviles");
 		expectedUser1.setEmail("anthony@gmail.com");
@@ -188,7 +198,8 @@ public class UserServiceTests {
 
 	static Stream<Arguments> input() {
 		User expectedUser1 = new User();
-		expectedUser1.setId(1);
+		expectedUser1.setId(1L);
+		expectedUser1.setUsername("testUser1");
 		expectedUser1.setFirstName("Anthony");
 		expectedUser1.setLastName("Aviles");
 		expectedUser1.setEmail("anthony@gmail.com");
@@ -196,7 +207,8 @@ public class UserServiceTests {
 		expectedUser1.setPassword("abc");
 
 		User expectedUser2 = new User();
-		expectedUser2.setId(2);
+		expectedUser2.setId(2L);
+		expectedUser1.setUsername("testUser2");
 		expectedUser2.setFirstName("Anthony");
 		expectedUser2.setLastName("James");
 		expectedUser2.setEmail("james@mail.com");
@@ -204,7 +216,8 @@ public class UserServiceTests {
 		expectedUser2.setPassword("abcdef");
 
 		User expectedUser3 = new User();
-		expectedUser3.setId(3);
+		expectedUser3.setId(3L);
+		expectedUser1.setUsername("testUser3");
 		expectedUser3.setFirstName("Stephen");
 		expectedUser3.setLastName("Thompson");
 		expectedUser3.setEmail("kicman@ufc.com");

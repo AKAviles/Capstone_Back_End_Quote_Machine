@@ -6,14 +6,9 @@ import com.anthonyaviles.QuoteMachine.model.User;
 import com.anthonyaviles.QuoteMachine.repository.UserRepository;
 import com.anthonyaviles.QuoteMachine.service.QuoteService;
 import com.anthonyaviles.QuoteMachine.service.UserService;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -52,40 +47,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserByEmail(String email) {
-		SessionFactory factory = new Configuration().configure().buildSessionFactory();
-		Session session = factory.openSession();
-		Transaction tx = session.beginTransaction();
-		User user = null;
-		try {
-			TypedQuery tq = session.createQuery("FROM User WHERE email = :email");
-			tq.setParameter("email", email);
-			user = (User)tq.getSingleResult();
-			tx.commit();
-			return user;
-		} catch (ResourceNotFoundException e) {
-			throw new ResourceNotFoundException("Email", "Email", email);
-		} finally {
-			session.close();
-		}
+		return userRepository.findByEmailIs(email);
 	}
 
 	@Override
 	public List<User> getUserByFirstName(String firstName) {
-		SessionFactory factory = new Configuration().configure().buildSessionFactory();
-		Session session = factory.openSession();
-		Transaction tx = session.beginTransaction();
-		List<User> result = null;
-		try {
-			TypedQuery tq = session.createQuery("FROM User WHERE firstName like :firstName");
-			tq.setParameter("firstName", "%" + firstName + "%");
-			result = tq.getResultList();
-			tx.commit();
-			return result;
-		} catch (ResourceNotFoundException e) {
-			throw new ResourceNotFoundException("Email", "Email", firstName);
-		} finally {
-			session.close();
-		}
+		return userRepository.findUserByFirstNameStartingWith(firstName);
 	}
 
 	@Override

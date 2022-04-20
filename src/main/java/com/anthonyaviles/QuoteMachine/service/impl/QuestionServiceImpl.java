@@ -6,15 +6,10 @@ import com.anthonyaviles.QuoteMachine.model.Question;
 import com.anthonyaviles.QuoteMachine.repository.QuestionRepository;
 import com.anthonyaviles.QuoteMachine.service.AnswerService;
 import com.anthonyaviles.QuoteMachine.service.QuestionService;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -53,21 +48,7 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Override
 	public Question getQuestionByQuestion(String question) {
-		SessionFactory factory = new Configuration().configure().buildSessionFactory();
-		Session session = factory.openSession();
-		Transaction tx = session.beginTransaction();
-		Question question1 = null;
-		try {
-			TypedQuery tq = session.createQuery("FROM Question WHERE question = :question");
-			tq.setParameter("question", question);
-			question1 = (Question)tq.getSingleResult();
-			tx.commit();
-			return question1;
-		} catch (ResourceNotFoundException e) {
-			throw new ResourceNotFoundException("Question", "Question", question1);
-		} finally {
-			session.close();
-		}
+		return questionRepository.findByQuestion(question);
 	}
 
 	@Override
