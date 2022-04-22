@@ -3,6 +3,7 @@ package com.anthonyaviles.QuoteMachine.controller;
 import com.anthonyaviles.QuoteMachine.model.Answer;
 import com.anthonyaviles.QuoteMachine.model.Question;
 import com.anthonyaviles.QuoteMachine.service.QuestionService;
+import org.springframework.data.domain.Slice;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,6 +44,11 @@ public class QuestionController {
 		return new ResponseEntity<>(questionService.getQuestionByQuestion(question), HttpStatus.OK);
 	}
 
+	@GetMapping("/moreQuestion/theQuestion")
+	public ResponseEntity<Slice<Question>> getQuestionsByQuestionFragment(@RequestParam(value="questionFragment") String fragment) {
+		return new ResponseEntity<>(questionService.findQuestionByString(fragment), HttpStatus.OK);
+	}
+
 	@PutMapping("{id}")
 	public ResponseEntity<Question> updateQuestion(@PathVariable("id") int id, @RequestBody Question question) {
 		Question newQuestion = questionService.updateQuestion(question, id);
@@ -73,4 +79,6 @@ public class QuestionController {
 		Answer answer = questionService.deleteAnswerFromQuestion(questionId, answerId);
 		return new ResponseEntity<>(answer, HttpStatus.OK);
 	}
+
+
 }

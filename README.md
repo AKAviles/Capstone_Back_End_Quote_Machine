@@ -9,6 +9,7 @@
 </div>
 
 ## Table of Contents
+- [Rubric](https://docs.google.com/document/d/1FfK_9rQ1veSptV0dOe_GRcLvRmL5qzYXfj6nWasC7cI/edit?usp=sharing)
 - [Progress](#Updates)
 - [User Stories](#User-Stories)
   - [User](#User)
@@ -18,6 +19,7 @@
   - [Tech Stack](#Tech-Stack)
   - [Database Schema](#Database-Schema)
   - [Usage](#Usage)
+
 
 ## Updates
 

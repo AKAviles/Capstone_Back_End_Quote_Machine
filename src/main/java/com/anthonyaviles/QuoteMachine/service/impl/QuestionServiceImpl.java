@@ -7,6 +7,7 @@ import com.anthonyaviles.QuoteMachine.repository.QuestionRepository;
 import com.anthonyaviles.QuoteMachine.service.AnswerService;
 import com.anthonyaviles.QuoteMachine.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -60,6 +61,11 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
+	public Slice<Question> findQuestionByString(String string) {
+		return questionRepository.findQuestionByAnswersIsContaining(string);
+	}
+
+	@Override
 	public Question deleteQuestion(int id) {
 		Question existingQuestion = getQuestionById(id);
 		questionRepository.delete(existingQuestion);
@@ -74,6 +80,7 @@ public class QuestionServiceImpl implements QuestionService {
 		questionAnswers.add(answer);
 		questionRepository.save(question);
 		return question;
+
 	}
 
 	@Override

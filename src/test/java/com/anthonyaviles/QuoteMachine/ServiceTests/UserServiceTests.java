@@ -208,7 +208,7 @@ public class UserServiceTests {
 
 		User expectedUser2 = new User();
 		expectedUser2.setId(2L);
-		expectedUser1.setUsername("testUser2");
+		expectedUser2.setUsername("testUser2");
 		expectedUser2.setFirstName("Anthony");
 		expectedUser2.setLastName("James");
 		expectedUser2.setEmail("james@mail.com");
@@ -217,7 +217,7 @@ public class UserServiceTests {
 
 		User expectedUser3 = new User();
 		expectedUser3.setId(3L);
-		expectedUser1.setUsername("testUser3");
+		expectedUser3.setUsername("testUser3");
 		expectedUser3.setFirstName("Stephen");
 		expectedUser3.setLastName("Thompson");
 		expectedUser3.setEmail("kicman@ufc.com");
