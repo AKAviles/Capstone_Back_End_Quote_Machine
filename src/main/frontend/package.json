@@ -18,12 +18,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false && react-scripts build",
+    "build": "react-scripts build",
     "build-win": "set CI=false && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -41,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-error-overlay": "^6.0.9"
   }
 }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import getAuthHeader from "../Service/authHeader";
 
 const API_BASE_URL =
   process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/api";
@@ -6,7 +7,9 @@ const API_BASE_URL =
 //Admin Api's-----------------------------------------------------
 export function getAllUsers() {
   return axios
-    .get(`${API_BASE_URL}/users`)
+    .get(`${API_BASE_URL}/admin/users`, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -17,7 +20,9 @@ export function getAllUsers() {
 
 export function getUserByEmail(email) {
   return axios
-    .get(`${API_BASE_URL}/users/?email=${email}`)
+    .get(`${API_BASE_URL}/admin/users/?email=${email}`, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -28,7 +33,9 @@ export function getUserByEmail(email) {
 
 export function getUserByFirstName(name) {
   return axios
-    .get(`${API_BASE_URL}/users/name?firstName=${name}`)
+    .get(`${API_BASE_URL}/admin/users/name?firstName=${name}`, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -39,7 +46,9 @@ export function getUserByFirstName(name) {
 
 export function deleteUser(userId) {
   return axios
-    .delete(`${API_BASE_URL}/users/${userId}`)
+    .delete(`${API_BASE_URL}/admin/users/${userId}`, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -50,7 +59,9 @@ export function deleteUser(userId) {
 
 export function addQuestion(questionData) {
   return axios
-    .post(`${API_BASE_URL}/questions`, questionData)
+    .post(`${API_BASE_URL}/questions`, questionData, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -61,7 +72,9 @@ export function addQuestion(questionData) {
 
 export function getQuestions() {
   return axios
-    .get(`${API_BASE_URL}/questions`)
+    .get(`${API_BASE_URL}/questions`, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -70,9 +83,11 @@ export function getQuestions() {
     });
 }
 
-export function updateQuestion(questionData, id) {
+export function updateQuestion(questionData, questionId) {
   return axios
-    .put(`${API_BASE_URL}/questions/${id}`, questionData)
+    .put(`${API_BASE_URL}/questions/${questionId}`, questionData, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -81,9 +96,11 @@ export function updateQuestion(questionData, id) {
     });
 }
 
-export function deleteQuestion(id) {
+export function deleteQuestion(questionId) {
   return axios
-    .delete(`${API_BASE_URL}/questions/${id}`)
+    .delete(`${API_BASE_URL}/questions/${questionId}`, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -92,9 +109,11 @@ export function deleteQuestion(id) {
     });
 }
 
-export function addAnswerToQuestion(answerData, id) {
+export function addAnswerToQuestion(answerData, questionId) {
   return axios
-    .post(`${API_BASE_URL}/questions/${id}/answers`, answerData)
+    .post(`${API_BASE_URL}/questions/${questionId}/answers`, answerData, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -105,7 +124,9 @@ export function addAnswerToQuestion(answerData, id) {
 
 export function deleteAnswerToQuestion(questionId, answerId) {
   return axios
-    .delete(`${API_BASE_URL}/questions/${questionId}/${answerId}/remove`)
+    .delete(`${API_BASE_URL}/questions/${questionId}/${answerId}/remove`, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -115,9 +136,12 @@ export function deleteAnswerToQuestion(questionId, answerId) {
 }
 
 //Non-Admin Api's-------------------------------------------------
-export function registerUser(userData) {
+
+export function getUser(userId) {
   return axios
-    .post(`${API_BASE_URL}/users`, userData)
+    .get(`${API_BASE_URL}/users/${userId}`, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -126,9 +150,11 @@ export function registerUser(userData) {
     });
 }
 
-export function getUser() {
+export function updateUser(userId, userObj) {
   return axios
-    .get(`${API_BASE_URL}/users/1`)
+    .put(`${API_BASE_URL}/users/${userId}`, userObj, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -137,9 +163,11 @@ export function getUser() {
     });
 }
 
-export function updateUser(userObj) {
+export function addQuote(userId, quoteData) {
   return axios
-    .put(`${API_BASE_URL}/users/1`, userObj)
+    .post(`${API_BASE_URL}/users/${userId}/quotes`, quoteData, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -148,9 +176,11 @@ export function updateUser(userObj) {
     });
 }
 
-export function addQuote(quoteData) {
+export function getQuotesForUser(userId) {
   return axios
-    .post(`${API_BASE_URL}/users/1/quotes`, quoteData)
+    .get(`${API_BASE_URL}/users/${userId}/quotes`, {
+      headers: getAuthHeader(),
+    })
     .then((res) => {
       return res;
     })
@@ -159,20 +189,11 @@ export function addQuote(quoteData) {
     });
 }
 
-export function getQuotesForUser() {
+export function deleteQuoteById(userId, quoteId) {
   return axios
-    .get(`${API_BASE_URL}/users/1/quotes`)
-    .then((res) => {
-      return res;
+    .delete(`${API_BASE_URL}/users/${userId}/${quoteId}/remove`, {
+      headers: getAuthHeader(),
     })
-    .catch((err) => {
-      console.log(err);
-    });
-}
-
-export function deleteQuoteById(quoteId) {
-  return axios
-    .delete(`${API_BASE_URL}/users/1/${quoteId}/remove`)
     .then((res) => {
       return res;
     })

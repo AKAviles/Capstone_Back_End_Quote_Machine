@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { registerUser } from "../../utils/apiCalls";
+import { registerUser } from "../../Service/authService";
 import { Link } from "react-router-dom";
 import "../../css/MainEntry/mainEntry.css";
 
 export default function Register() {
   const initialUserForm = {
+    username: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -71,6 +72,16 @@ export default function Register() {
         onSubmit={onSubmitHandler}
       >
         <h3> Welcome to Delete! </h3>
+
+        <input
+          type='text'
+          placeholder='Username'
+          value={userData.username}
+          required='required'
+          id='username'
+          name='username'
+          onChange={(e) => handleMainChange(e)}
+        />
 
         <input
           type='text'

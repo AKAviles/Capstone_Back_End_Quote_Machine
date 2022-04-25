@@ -19,6 +19,14 @@ export default function AdminNav() {
         <Link to='/admin/q-and-a'>
           <li>Consultation Questions</li>
         </Link>
+
+        <Link to='/dashboard'>
+          <li>Consultation</li>
+        </Link>
+
+        <Link to='/contact'>
+          <li>Contact Information</li>
+        </Link>
       </ul>
     </div>
   );

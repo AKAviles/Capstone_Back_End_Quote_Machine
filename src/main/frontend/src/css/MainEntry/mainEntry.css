@@ -82,6 +82,13 @@ h2 {
   max-width: 40%;
 }
 
+.btn-small {
+  height: 35px;
+  letter-spacing: 0.5px;
+  min-width: 10%;
+  max-width: 30%;
+}
+
 /* Forms */
 
 .main-forms {

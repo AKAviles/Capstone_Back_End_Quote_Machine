@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { addQuote } from "../../utils/apiCalls";
-
+import { getCurrentUser } from "../../Service/authService";
 import "../../css/card.css";
 import "../../css/displayTotal.css";
 
@@ -20,7 +20,8 @@ export default function DisplayTotal({ formData, handleSubmit }) {
   }
 
   function handleAddQuote() {
-    addQuote(quoteData);
+    let user = getCurrentUser();
+    addQuote(user.id, quoteData);
     window.location.reload(false);
   }
 
@@ -159,6 +160,7 @@ export default function DisplayTotal({ formData, handleSubmit }) {
       >
         Calculate
       </button>
+
       {clicked ? (
         <div>
           <p className='text'>
