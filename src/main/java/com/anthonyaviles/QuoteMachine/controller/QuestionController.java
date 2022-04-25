@@ -3,7 +3,8 @@ package com.anthonyaviles.QuoteMachine.controller;
 import com.anthonyaviles.QuoteMachine.model.Answer;
 import com.anthonyaviles.QuoteMachine.model.Question;
 import com.anthonyaviles.QuoteMachine.service.QuestionService;
-import org.springframework.data.domain.Slice;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,8 @@ public class QuestionController {
 
 	private QuestionService questionService;
 
+	Logger logger = LoggerFactory.getLogger(QuestionController.class);
+
 	public QuestionController(QuestionService questionService) {
 		super();
 		this.questionService = questionService;
@@ -23,17 +26,20 @@ public class QuestionController {
 
 	@PostMapping
 	public ResponseEntity<Question> saveQuestion(@RequestBody Question question) {
+		logger.info("Saving question to database: " + question);
 		return new ResponseEntity<Question>(questionService.saveQuestion(question), HttpStatus.CREATED);
 	}
 
 	@GetMapping
 	public ResponseEntity<List<Question>> getAllQuestions() {
+		logger.info("Getting list of question...");
 		List<Question> questions = questionService.getAllQuestions();
 		return new ResponseEntity<>(questions, HttpStatus.OK);
 	}
 
 	@GetMapping("{id}")
 	public ResponseEntity<Question> getQuestionById(@PathVariable("id") int id) {
+		logger.info("Getting question by id: " + id);
 		Question question = questionService.getQuestionById(id);
 		return new ResponseEntity<>(question, HttpStatus.OK);
 	}
@@ -44,19 +50,16 @@ public class QuestionController {
 		return new ResponseEntity<>(questionService.getQuestionByQuestion(question), HttpStatus.OK);
 	}
 
-	@GetMapping("/moreQuestion/theQuestion")
-	public ResponseEntity<Slice<Question>> getQuestionsByQuestionFragment(@RequestParam(value="questionFragment") String fragment) {
-		return new ResponseEntity<>(questionService.findQuestionByString(fragment), HttpStatus.OK);
-	}
-
 	@PutMapping("{id}")
 	public ResponseEntity<Question> updateQuestion(@PathVariable("id") int id, @RequestBody Question question) {
+		logger.info("Updating question information");
 		Question newQuestion = questionService.updateQuestion(question, id);
 		return new ResponseEntity<>(newQuestion, HttpStatus.OK);
 	}
 
 	@DeleteMapping("{id}")
 	public ResponseEntity<String> deleteQuestion(@PathVariable("id") int id) {
+		logger.info("Deleting question with id: " + id);
 		questionService.deleteQuestion(id);
 		return new ResponseEntity<>("Question Deleted Successfully.", HttpStatus.OK);
 	}
