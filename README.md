@@ -24,6 +24,11 @@
 ## Updates
 
 ### Progress
+#### April 25
+##### Project Completion: 100%
+- Spring and React in same Build
+- Will be working on getting projects running on same port
+
 #### April 19th
 ##### Estimated Completion: 97%
 ##### Completed
