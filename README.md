@@ -10,6 +10,8 @@
 
 ## Table of Contents
 - [Rubric](https://docs.google.com/document/d/1FfK_9rQ1veSptV0dOe_GRcLvRmL5qzYXfj6nWasC7cI/edit?usp=sharing)
+- [Wire Frames](https://drive.google.com/file/d/1ZgD80wOu4nNoKr2CS1wRwljnvhYLExGq/view?usp=sharing)
+- [Installation](#Running Quote-Machine)
 - [Progress](#Updates)
 - [User Stories](#User-Stories)
   - [User](#User)
@@ -20,6 +22,20 @@
   - [Database Schema](#Database-Schema)
   - [Usage](#Usage)
 
+
+## Installation and getting Quote Machine to run
+1. Clone or pull repository to directory of choice
+2. run "mvn clean install"
+   1. This will install appropriate node and npm versions locally to run React project and build the project
+3. When build is successful, run spring project
+   1. If run failed, check application.properties and update database credentials and add "usermanagementsystem" database to your database manager
+4. When Tomcat server is running, change directories into "src/main/frontend"
+5. run "npm start" and this will start react server on port 3000
+
+- You can then register a basic user 
+- To login as Admin, use the following credentials:
+  - Username: testAdmin1
+  - Password: abc123
 
 ## Updates
 
