@@ -11,7 +11,7 @@
 ## Table of Contents
 - [Rubric](https://docs.google.com/document/d/1FfK_9rQ1veSptV0dOe_GRcLvRmL5qzYXfj6nWasC7cI/edit?usp=sharing)
 - [Wire Frames](https://drive.google.com/file/d/1ZgD80wOu4nNoKr2CS1wRwljnvhYLExGq/view?usp=sharing)
-- [Installation](#Installation and getting Quote Machine to run)
+- [Installation](#Installation-and-getting-Quote-Machine-to-run)
 - [Progress](#Updates)
 - [User Stories](#User-Stories)
   - [User](#User)
